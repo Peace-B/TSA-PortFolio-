@@ -76,12 +76,11 @@
 @media (min-width: 370px) and (max-width: 767px) {
     .footer-container {
         max-width: 800px;
-        height: 400px;
+        height: 470px;
     } 
 
     .footer-nav {
         display: flex;
-        flex-direction: column;
         align-items: flex-start;
         padding-top: 1rem;
     }
@@ -97,16 +96,19 @@
         padding: 2rem 0;
     }
 
+    .bottom-footer p {
+        text-align: center;
+        padding: 1rem 0;
+    }
+
     .line {
         width: 100%;
         border: 1px solid gray;
-        margin-top: 4rem;
+        margin-top: 4rem ;
     }
     
-
     .made {
         display: flex;
-        flex-direction: column;
         gap: 14px;
     }
 }
@@ -114,13 +116,12 @@
 @media (max-width: 320px) {
     .footer-container {
         max-width: 320px;
-        height: 400px;
+        height: 520px;
     }
 
     .footer-nav {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
         padding-top: 1rem;
     }
 
@@ -135,16 +136,20 @@
         padding: 2rem 0;
     }
 
+    .bottom-footer p {
+        text-align: center;
+        padding: 1rem 0;
+    }
+
     .line {
         width: 100%;
         border: 1px solid gray;
         margin-top: 4rem;
     }
-    
 
     .made {
         display: flex;
-        flex-direction: column;
+        /* flex-direction: column; */
         gap: 14px;
     }
 }

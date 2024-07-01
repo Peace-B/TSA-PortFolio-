@@ -43,6 +43,9 @@ const SideNav = () => {
            <a href="#tes" style={{textDecoration:"none"}}>
            <li>Testimonials</li>
            </a>
+           <a href="#contact" style={{textDecoration:"none", border: '1px solid  #5E3BEE', padding: "1rem"}}>
+           <li style={{color:" #5E3BEE"}}>Contact Me</li>
+           </a>
         </ul>
       </div>) :
       

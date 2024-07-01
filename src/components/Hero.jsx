@@ -23,6 +23,7 @@ import emailjs from '@emailjs/browser';
 import SideNav from './SideNav'
 
 const Hero = () => {
+
   const form = useRef()
   const sendEmail = (e) => {
     e.preventDefault();
@@ -222,8 +223,8 @@ const Hero = () => {
       <form ref={form} onSubmit={sendEmail}>
         <div className="con-form" >
           <div className="first-n">
-          <label htmlFor="">First name</label>
-          <input type="text" name='user_name' required/>
+          <label>First name</label>
+          <input type="text" name='user_name'/>
           </div>
           <div className="first-n">
           <label htmlFor="">Last name</label>
