@@ -1,0 +1,150 @@
+.footer-container {
+    max-width: 1920px;
+    height: 300px;
+    background-color: 
+    #F5FCFF;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 30px;
+    height: 30px;
+}
+
+.footer-nav ul {
+    display: flex;
+    gap: 12px;
+}
+
+.footer-nav ul a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.footer-nav ul a:hover {
+    color: #5E3BEE;
+}
+
+.socials {
+    display: flex;
+    gap: 10px;
+}
+
+.socials img {
+    width: 15px;
+    height: 15px;
+}
+
+.line {
+    width: 100%;
+    border: 1px solid gray;
+    margin-top: 8rem;
+}
+
+.bottom-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 0;
+}
+
+.made {
+    display: flex;
+    gap: 14px;
+}
+
+.made a {
+ text-decoration: none;
+ color: #000000;
+}
+
+
+.made a:hover {
+    color: #5E3BEE;
+}
+
+@media (min-width: 370px) and (max-width: 767px) {
+    .footer-container {
+        max-width: 800px;
+        height: 400px;
+    } 
+
+    .footer-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 1rem;
+    }
+
+    .footer-nav ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bottom-footer {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 0;
+    }
+
+    .line {
+        width: 100%;
+        border: 1px solid gray;
+        margin-top: 4rem;
+    }
+    
+
+    .made {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+}
+
+@media (max-width: 320px) {
+    .footer-container {
+        max-width: 320px;
+        height: 400px;
+    }
+
+    .footer-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 1rem;
+    }
+
+    .footer-nav ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bottom-footer {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 0;
+    }
+
+    .line {
+        width: 100%;
+        border: 1px solid gray;
+        margin-top: 4rem;
+    }
+    
+
+    .made {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+}
