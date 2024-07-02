@@ -17,7 +17,6 @@ const SideNav = () => {
     })
   })
 
- console.log(menu);
   return (
     <div className='sidebar' ref={menuRef}>
         <div className="left-logo">

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import NavBar from './NavBar'
 import "../Css/Hero.css"
 import Footer from "../components/Footer"
@@ -18,30 +18,57 @@ import Img1 from "../images/Avatar Image (1).png"
 import Img2 from "../images/Avatar Image (2).png"
 import Img3 from "../images/Avatar Image.png"
 import Form from 'react-bootstrap/Form';
-import { useRef } from 'react'
-import emailjs from '@emailjs/browser';
 import SideNav from './SideNav'
 
 const Hero = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    message: '',
+    termsAccepted: false,
+  });
 
-  const form = useRef()
-  const sendEmail = (e) => {
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.firstName) newErrors.firstName = 'First name is required';
+    if (!formData.lastName) newErrors.lastName = 'Last name is required';
+    if (!formData.email) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Email address is invalid';
+    }
+    if (!formData.phoneNumber) newErrors.phoneNumber = 'Phone number is required';
+    if (!formData.message) newErrors.message = 'Message is required';
+    if (!formData.termsAccepted) newErrors.termsAccepted = 'You must accept the terms';
+
+    return newErrors;
+  };
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === 'checkbox' ? checked : value,
+    });
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm('service_a5omy7u', 'template_jhvzysl', form.current, {
-        publicKey: 'ZnUpE7zWi6n_KeSea',
-      })
-      .then(
-        () => {
-          console.log('SUCCESS!');
-        },
-        (error) => {
-          console.log('FAILED...', error.text);
-        },
-      );
-      e.target.reset()
-  };
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+    } else {
+      setErrors({});
+      console.log('Form data:', formData);
+    }
+  }
+
   return (
     <div className='container'>
       <NavBar/>
@@ -220,36 +247,71 @@ const Hero = () => {
         <h2>Contact Me</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </div>
-      <form ref={form} onSubmit={sendEmail}>
+      <form onSubmit={handleSubmit}>
         <div className="con-form" >
           <div className="first-n">
           <label>First name</label>
-          <input type="text" name='user_name'/>
+          <input 
+          type="text" 
+          name='firstName' 
+          value={formData.firstName}
+          onChange={handleChange}/>
+          {errors.firstName && <p className="text-danger text-sm">{errors.firstName}</p>}
           </div>
           <div className="first-n">
           <label htmlFor="">Last name</label>
-          <input type="text" name='user_last_name' required/>
+          <input 
+          type="text" 
+          name='lastName'
+          value={formData.lastName}
+          onChange={handleChange}/>
+         {errors.lastName && <p className="text-danger text-sm">{errors.lastName}</p>}
           </div>
           <div className="first-n">
-          <label htmlFor="">Email</label>
-          <input type="email" name='user_email' required/>
+          <label>Email</label>
+          <input 
+          type="email" 
+          name='email'
+          value={formData.email}
+          onChange={handleChange}/>
+          {errors.email && <p className="text-danger text-sm">{errors.email}</p>}
           </div>
           <div className="first-n">
-          <label htmlFor="">Phone number</label>
-          <input type="text" required/>
+          <label>Phone number</label>
+          <input 
+          type="text"
+          name='phoneNumber'
+          value={formData.phoneNumber}
+          onChange={handleChange}/>
+          {errors.phoneNumber && <p className="text-danger text-sm">{errors.phoneNumber}</p>}
           </div>
         </div>
         <div className="msg">
-            <label htmlFor="text" for="mytext">Message</label>
-            <textarea id='mytext' rows="8" cols="40" placeholder='Type your message.....'></textarea>
+            <label>Message</label>
+            <textarea 
+            id='mytext' 
+            rows="8" 
+            cols="40"
+            placeholder='Type your message.....'
+            name="message"
+            value={formData.message}
+            onChange={handleChange}></textarea>
+            {errors.message && <p className="text-danger text-sm">{errors.message}</p>}
           </div>
           <div>
-      <Form.Check className='radio' aria-label="option 1" label="I accept the Terms"/>
+          <input
+            type="checkbox"
+            id="formBasicCheckbox"
+            name="termsAccepted"
+            checked={formData.termsAccepted}
+            onChange={handleChange}
+            className={`form-checkbox h-5 w-5 text-primary ${errors.termsAccepted ? 'border-red-500' : ''}`}/>
+            <label htmlFor="formBasicCheckbox" className="ml-2 text-dark">I accept the Terms</label>
+      {errors.termsAccepted && <p className="text-danger text-sm">{errors.termsAccepted}</p>}
     </div>
     <button type="submit">Submit</button>
       </form>
       </div>
-
      </div>
      <Footer/>
     </div>
