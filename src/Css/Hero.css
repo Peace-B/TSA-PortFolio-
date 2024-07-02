@@ -614,7 +614,7 @@ background-size: contain;
 }
  
 /* smaller screen */
-@media (max-width: 320px) {
+@media (max-width: 600px) {
     #hero {
         max-width: 320px;
         height: 1000px;

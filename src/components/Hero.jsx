@@ -17,7 +17,6 @@ import Stars from "../images/Stars.png"
 import Img1 from "../images/Avatar Image (1).png"
 import Img2 from "../images/Avatar Image (2).png"
 import Img3 from "../images/Avatar Image.png"
-import Form from 'react-bootstrap/Form';
 import SideNav from './SideNav'
 
 const Hero = () => {
